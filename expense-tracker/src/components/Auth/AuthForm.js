@@ -1,10 +1,13 @@
 import { useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import classes from './AuthForm.module.css';
 
-import classes from './Signup.module.css';
+const AuthForm = () => {
+  const navigate = useNavigate();
 
-const Signup = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const confirmPasswordInputRef = useRef();
@@ -53,7 +56,7 @@ const Signup = () => {
     }).then(res => {
          setLoading(false);
 
-      if (res.ok) {
+      if (res.ok) { 
         return res.json();
       } else {
         res.json().then(data => {   // Json also return promises mi,
@@ -61,16 +64,17 @@ const Signup = () => {
           if(data && data.error && data.error.message) {
           errorMessage = data.error.message
           }
-        return toast(data.error.message);
+        return toast(errorMessage);
         // throw new Error(errorMessage);
         })
       }
     })
-    .then((data) => {   
+    .then((data) => {  
       if(data){
+      navigate('/expenses') 
       console.log('User has successfully signed up')
       return toast('sucsess');
-      }                   
+      }                       
     })
     .catch((err) => {
       return toast(err.message)
@@ -125,4 +129,4 @@ return (
   );
 };
 
-export default Signup;
+export default AuthForm;
