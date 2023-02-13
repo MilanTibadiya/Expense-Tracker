@@ -71,8 +71,8 @@ const AuthForm = () => {
     })
     .then((data) => {  
       if(data){
-      navigate('/expenses') 
-      console.log('User has successfully signed up')
+      navigate('/home') ;
+      localStorage.setItem("idToken" , data.idToken);
       return toast('sucsess');
       }                       
     })

@@ -3,7 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Header from './components/Header/Header'
 import AuthForm from "./components/Auth/AuthForm";
-import Expenses from "./components/Pages/Expenses/Expenses";
+import Home from "./components/Pages/Home/Home";
+import CompleteProfile from "./components/Pages/CompleteProfile/CompleteProfile";
 
 var router = createBrowserRouter( [
   {
@@ -11,7 +12,8 @@ var router = createBrowserRouter( [
     element: <Header/>,
     children: [
       { path: "/", element: <AuthForm/> },
-      { path: "/expenses", element: <Expenses/> },
+      { path: "/home", element: <Home/> },
+      { path: "/completeprofile", element: <CompleteProfile/> },
     ],
   },
 ]);

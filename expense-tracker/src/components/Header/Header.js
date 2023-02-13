@@ -13,8 +13,8 @@ const MainNavigation = () => {
       </NavLink>
       <nav>
         <ul>
-          <li><NavLink>Home</NavLink></li>
-          <li><NavLink to='/expenses'>Expanses</NavLink></li>
+          <li><NavLink to='/home'>Home</NavLink></li>
+          <li><NavLink>Expanses</NavLink></li>
           <li><NavLink>About US</NavLink></li>
           <li><NavLink to='/'>
             <button>Login</button>

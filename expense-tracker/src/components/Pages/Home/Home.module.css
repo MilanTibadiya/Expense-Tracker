@@ -1,0 +1,22 @@
+.welcome {
+    border-bottom: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.profilelink {
+    background-color: orange;
+    padding-left: 30px;
+    border-radius: 12px 0px 0px 12px;
+    padding-right: 20px;
+    padding-block: 10px;
+}
