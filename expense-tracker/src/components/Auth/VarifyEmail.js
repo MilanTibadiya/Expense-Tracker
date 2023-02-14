@@ -31,7 +31,6 @@ const VarifyEmail = () => {
         </div>
             <div className={classes.verifyEmail}>
                 <button onClick={() => varifyEmailHandler()} type='submit' className={classes.email}>Verify Email</button>
-                <button className={classes.logout}>logout</button>
             </div>
             <ToastContainer/>
         </>

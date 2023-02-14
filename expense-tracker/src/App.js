@@ -22,9 +22,9 @@ var router = createBrowserRouter( [
 ]);
 function App() {
   return (
-    <Fragment>
+    <AuthContextProvider>
       <RouterProvider router={router} />
-    </Fragment>
+    </AuthContextProvider>
   );
 }
 
