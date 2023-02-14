@@ -1,0 +1,44 @@
+/* m */
+.welcome {
+    border-bottom: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.verifyEmail {
+    border: 2px solid rgb(216, 192, 192);
+    display: flex;
+    align-items: center;
+    padding-block: 20px;
+    gap: 40px;
+    justify-content: center;
+    background-color: bisque;
+}
+
+.email{
+    background-color: orange;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 6px;
+    border-color: green;
+}
+.logout{
+    background-color: orange;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 25px;
+    border-color: green;
+}
+.email:hover, .logout:hover {
+    border-color: #fff;
+    color: #fff;
+}

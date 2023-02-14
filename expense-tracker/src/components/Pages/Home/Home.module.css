@@ -18,5 +18,16 @@
     padding-left: 30px;
     border-radius: 12px 0px 0px 12px;
     padding-right: 20px;
-    padding-block: 10px;
+    padding-block: 4px;
 }
+.profilelink a:hover {
+    color: #fff;
+}
+
+.verifyEmail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block: 10px;
+}
+
