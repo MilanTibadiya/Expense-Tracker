@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 import AuthContext from "../../store/Auth-context";
@@ -17,7 +17,7 @@ const MainNavigation = () => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/home">Home</NavLink>
+              <NavLink>Home</NavLink>
             </li>
             <li>
               <NavLink>Expanses</NavLink>
@@ -41,7 +41,7 @@ const MainNavigation = () => {
                       Authctx.setIdToken(null);
                     }}
                   >
-                    logout
+                    Logout
                   </button>
                 </NavLink>
               )}

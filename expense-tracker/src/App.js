@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthContextProvider } from "./store/Auth-context";
 
@@ -7,14 +7,15 @@ import AuthForm from "./components/Auth/AuthForm";
 import Home from "./components/Pages/Home/Home";
 import CompleteProfile from "./components/Pages/CompleteProfile/CompleteProfile";
 import VarifyEmail from "./components/Auth/VarifyEmail";
+import PrivateRoute from "./components/Pages/PrivateRoute";
 
-var router = createBrowserRouter( [
+const router = createBrowserRouter( [
   {
     path: '/',
     element: <Header/>,
     children: [
       { path: "/", element: <AuthForm/> },
-      { path: "/home", element: <Home/> },
+      { path: "/home", element: <PrivateRoute><Home/></PrivateRoute> },
       { path: "/completeprofile", element: <CompleteProfile/> },
       { path: "/varifyemail", element: <VarifyEmail/> },
     ],
