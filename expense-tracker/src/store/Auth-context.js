@@ -9,7 +9,7 @@ export const AuthContextProvider = (props) => {
 
     useEffect(() => {
         setToken(localStorage.getItem('idToken'));
-    }, []);
+    }, [setToken]);
 
     const loginHandler = () => {};
 

@@ -6,24 +6,22 @@ import classes from "./Header.module.css";
 
 const MainNavigation = () => {
   const Authctx = useContext(AuthContext);
-  console.log("aaaa", Authctx);
+  // console.log("header auth", Authctx);
 
   return (
     <React.Fragment>
       <header className={classes.header}>
-        <NavLink to="/a">
-          <div className={classes.logo}>Expense Tracker</div>
-        </NavLink>
+        <NavLink><div className={classes.logo}>Expense Tracker</div></NavLink>
         <nav>
           <ul>
             <li>
               <NavLink>Home</NavLink>
             </li>
             <li>
-              <NavLink>Expanses</NavLink>
+              <NavLink to='/expanses'>Expanses</NavLink>
             </li>
             <li>
-              <NavLink>About US</NavLink>
+              <NavLink to='about'>About US</NavLink>
             </li>
             <li>
               {!Authctx.isLoggedIn ? (
