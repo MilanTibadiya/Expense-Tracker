@@ -8,6 +8,7 @@ import Home from "./components/Pages/Home/Home";
 import CompleteProfile from "./components/Pages/CompleteProfile/CompleteProfile";
 import VarifyEmail from "./components/Auth/VarifyEmail";
 import PrivateRoute from "./components/Pages/PrivateRoute";
+import ForgotPassword from "./components/Auth/ForgotPassword";
 
 const router = createBrowserRouter( [
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter( [
       { path: "/home", element: <PrivateRoute><Home/></PrivateRoute> },
       { path: "/completeprofile", element: <CompleteProfile/> },
       { path: "/varifyemail", element: <VarifyEmail/> },
+      { path: "/forgotpassword", element: <ForgotPassword/> },
     ],
   },
 ]);

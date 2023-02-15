@@ -1,5 +1,5 @@
 import { useState, useRef, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 import AuthContext from '../../store/Auth-context';
 
@@ -119,6 +119,7 @@ return (
           />
         </div>}
         <div className={classes.actions}>
+          {isLogin &&<NavLink to='/forgotpassword' className={classes.toggle} id={classes.newtoggle}>Forgot password?</NavLink>}
           {loading && <p>Sending request...</p> }
           {!loading && <button>{isLogin ? "Login" : "Create Account"}</button>}
           <button
