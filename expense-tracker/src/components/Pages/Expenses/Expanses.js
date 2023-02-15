@@ -7,7 +7,7 @@ const Expenses = () => {
   const [expenseArr, setExpenseArr] = useState([]);
   console.log("Expense", expenseArr);
 
-  expenseArr.map((x, i) => console.log('this is x',i , x))
+  // expenseArr.map((x, i) => console.log('this is x',i , x))
   return (
     <>
       <section>

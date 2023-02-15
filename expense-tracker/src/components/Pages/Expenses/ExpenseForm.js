@@ -1,6 +1,9 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useContext, useRef } from "react";
+import ExpenseContext from "../../../store/ExpenseContext";
 
 const ExpenseForm = (props) => {
+  const expenseCtx = useContext(ExpenseContext);
+
   const amountRef = useRef();
   const descriptionRef = useRef();
   const categoryRef = useRef();
@@ -14,7 +17,8 @@ const ExpenseForm = (props) => {
       Category: categoryRef.current.value,
     };
     // console.log(expenseData);
-    props.setExpenseArr((data) => [...data, expenseData]);
+    // props.setExpenseArr((data) => [...data, expenseData]);
+    expenseCtx.postExpenses(expenseData);
   };
   return (
     <Fragment>

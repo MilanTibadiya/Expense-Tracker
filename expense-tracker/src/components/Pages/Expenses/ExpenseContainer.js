@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import ExpenseContext from "../../../store/ExpenseContext";
 
 const ExpenseContainer = (props) => {
-//   console.log("container", props.expenseArr);
+  const expansesCtx = useContext(ExpenseContext);
+  
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Expanses</h1>
       <div>
-        {props.expenseArr.map((x, i) => (
+        {expansesCtx.expenses.map((x, i) => (
           <div
             className=" d-flex justify-content-around mx-5 p-1 shadow"
             key={i}
