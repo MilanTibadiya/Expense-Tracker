@@ -1,29 +1,56 @@
-import React, { Fragment, useContext, useRef } from "react";
+import React, { Fragment, useContext, useRef, useEffect } from "react";
 import ExpenseContext from "../../../store/ExpenseContext";
 
 const ExpenseForm = (props) => {
   const expenseCtx = useContext(ExpenseContext);
+  // console.log('edit in form', expenseCtx.editExp.item.id)
 
   const amountRef = useRef();
   const descriptionRef = useRef();
   const categoryRef = useRef();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = () => {
+    
+    const expenseData = {
+      Amount: amountRef.current.value,
+      Description: descriptionRef.current.value,
+      Category: categoryRef.current.value,
+    };
+
+      expenseCtx.postExpenses(expenseData);
+    
+    amountRef.current.value = '';
+    descriptionRef.current.value = '';
+    categoryRef.current.value= ''; 
+  };
+
+  useEffect(() => {
+    amountRef.current.value = expenseCtx.editExp.item?.Amount || '';
+    descriptionRef.current.value = expenseCtx.editExp.item?.Description || '';
+    categoryRef.current.value= expenseCtx.editExp.item?.Category || '';
+  }, [expenseCtx.editExp]);
+
+   const editHandler = () => {
+    expenseCtx.setUpadate(false);
+    // console.log('check obj dest',expenseCtx.editExp.id, "---->")
 
     const expenseData = {
       Amount: amountRef.current.value,
       Description: descriptionRef.current.value,
       Category: categoryRef.current.value,
     };
-    // console.log(expenseData);
-    // props.setExpenseArr((data) => [...data, expenseData]);
-    expenseCtx.postExpenses(expenseData);
-  };
+
+    expenseCtx.editExpense(expenseCtx.editExp.id, expenseData);
+
+    amountRef.current.value = '';
+    descriptionRef.current.value = '';
+    categoryRef.current.value= ''; 
+   }
+
   return (
     <Fragment>
       <form
-        onSubmit={submitHandler}
+        // onSubmit={submitHandler}
         id="expenseForm"
         className="text-center justify-content-around mx-5 p-5 shadow"
       >
@@ -56,12 +83,13 @@ const ExpenseForm = (props) => {
           <option>other..</option>
         </select>
 
-        <button
-          // onClick={handleSubmit}
-          className="btn mt-3 btn-primary"
-        >
+        {!expenseCtx.update && <button
+          className="btn mt-3 btn-primary" onClick={() => submitHandler()}>
           ADD EXPENSE
-        </button>
+        </button> }
+        {expenseCtx.update &&<button className="btn mt-3 mx-2 btn-warning" onClick={() => editHandler()}>
+          UPDATE EXPENSE
+        </button>}
       </form>
     </Fragment>
   );
