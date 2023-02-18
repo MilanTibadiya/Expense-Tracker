@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import { CSVDownload, CSVLink } from "react-csv";
+
 import { useDispatch, useSelector } from "react-redux";
 import { deleteExpanse, getExpenses } from "./ExpenseRequests";
 
@@ -20,7 +22,12 @@ const ExpenseContainer = (props) => {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Expenses</h1>
-      <div>
+      {expense && (
+        <CSVLink data={expense}>
+          <button className="ml-5 btn btn-info">DOWNLOAD EXPENSES FILE(csv)</button>
+        </CSVLink>
+      )}
+      <div id='whiteBorder'>
         {expense?.map((x, i) => (
           <div
             className="d-flex justify-content-around mx-5 p-1 shadow"
@@ -48,7 +55,6 @@ const ExpenseContainer = (props) => {
           </div>
         ))}
       </div>
-      ;
     </>
   );
 };

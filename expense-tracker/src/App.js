@@ -1,4 +1,5 @@
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { useSelector } from "react-redux";
+import './App.css';
 
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -12,6 +13,8 @@ import PrivateRoute from "./components/Pages/PrivateRoute";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import Expenses from "./components/Pages/Expenses/Expanses";
 import About from "./components/Pages/About/About";
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const router = createBrowserRouter( [
   {
@@ -31,9 +34,16 @@ const router = createBrowserRouter( [
 ]);
 
 function App() {
+  const darkTheme = useSelector((state) => state.theme.dark);
+
   return (
     <>
+    <div
+      style={{ height: '100vh' }}
+      id={darkTheme ? 'dark' :'light'}
+      className="App">
       <RouterProvider router={router} />
+      </div>
       </>
   );
 }

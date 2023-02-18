@@ -1,0 +1,22 @@
+#dark {
+    background-color: rgba(3, 3, 3, 0.918) ;
+    color: white;
+  }
+  #dark input {
+  color : white;
+  background-color: #282c34;
+  }
+  
+  #dark #btn {
+    background-color: #181818;
+  }
+
+  #dark section {
+    border: 1px solid white;
+  }
+
+  #whiteBorder {
+    border: 1px solid #fff;
+  }
+
+  

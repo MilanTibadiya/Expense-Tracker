@@ -122,8 +122,8 @@ return (
         <div className={classes.actions}>
           {isLogin &&<NavLink to='/forgotpassword' className={classes.toggle} id={classes.newtoggle}>Forgot password?</NavLink>}
           {loading && <p>Sending request...</p> }
-          {!loading && <button>{isLogin ? "Login" : "Create Account"}</button>}
-          <button
+          {!loading && <button id='btn'>{isLogin ? "Login" : "Create Account"}</button>}
+          <button 
             type="button"
             className={classes.toggle} onClick={()=> (setIsLogin(!isLogin))}>
             {isLogin ? "Create new account" : "Login with existing account"}
