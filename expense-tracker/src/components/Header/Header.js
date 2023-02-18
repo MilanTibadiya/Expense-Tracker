@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
-import AuthContext from "../../store/Auth-context";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/AuthSlicer";
+
 import classes from "./Header.module.css";
 
 const MainNavigation = () => {
-  const Authctx = useContext(AuthContext);
-  // console.log("header auth", Authctx);
+
+    const dispatch = useDispatch();
+    const IdToken = useSelector(state => state.auth.IdToken);
 
   return (
     <React.Fragment>
@@ -15,7 +18,7 @@ const MainNavigation = () => {
         <nav>
           <ul>
             <li>
-              <NavLink>Home</NavLink>
+              <NavLink to='/home'>Home</NavLink>
             </li>
             <li>
               <NavLink to='/expanses'>Expanses</NavLink>
@@ -24,7 +27,7 @@ const MainNavigation = () => {
               <NavLink to='about'>About US</NavLink>
             </li>
             <li>
-              {!Authctx.isLoggedIn ? (
+              {!IdToken ? (
                 <NavLink to="/">
                   {" "}
                   <button>Login</button>
@@ -34,9 +37,7 @@ const MainNavigation = () => {
                   {" "}
                   <button
                     onClick={() => {
-                      localStorage.removeItem("idToken");
-                      localStorage.removeItem("userEmail");
-                      Authctx.setIdToken(null);
+                      dispatch(authActions.logout());
                     }}
                   >
                     Logout

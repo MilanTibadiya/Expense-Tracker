@@ -2,8 +2,6 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthContextProvider } from "./store/Auth-context";
-import { ExpenseContextProvider } from './store/ExpenseContext';
 
 import Header from './components/Header/Header'
 import AuthForm from "./components/Auth/AuthForm";
@@ -34,11 +32,9 @@ const router = createBrowserRouter( [
 
 function App() {
   return (
-    <AuthContextProvider>
-      <ExpenseContextProvider>
-        <RouterProvider router={router} />
-      </ExpenseContextProvider>
-    </AuthContextProvider>
+    <>
+      <RouterProvider router={router} />
+      </>
   );
 }
 

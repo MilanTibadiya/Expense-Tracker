@@ -1,15 +1,15 @@
-import { useState, useRef, useContext} from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
-import AuthContext from '../../store/Auth-context';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/AuthSlicer';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
-  const Authctx = useContext(AuthContext);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const emailInputRef = useRef();
@@ -77,7 +77,8 @@ const AuthForm = () => {
       if(data){
       navigate('/home') ;
       localStorage.setItem("idToken" , data.idToken);
-      Authctx.setToken(data.idToken)
+      // Authctx.setToken(data.idToken);
+      dispatch(authActions.login(data.idToken)) //not payload current
       return toast('sucsess');
       }                       
     })

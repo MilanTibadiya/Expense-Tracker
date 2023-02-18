@@ -1,9 +1,11 @@
 import React, { Fragment, useContext, useRef, useEffect } from "react";
-import ExpenseContext from "../../../store/ExpenseContext";
+
+import { useDispatch } from "react-redux";
+import { postExpenses } from "./ExpenseRequests";
+import { editExpense } from "./ExpenseRequests";
 
 const ExpenseForm = (props) => {
-  const expenseCtx = useContext(ExpenseContext);
-  // console.log('edit in form', expenseCtx.editExp.item.id)
+  const dispatch = useDispatch();
 
   const amountRef = useRef();
   const descriptionRef = useRef();
@@ -16,8 +18,8 @@ const ExpenseForm = (props) => {
       Description: descriptionRef.current.value,
       Category: categoryRef.current.value,
     };
-
-      expenseCtx.postExpenses(expenseData);
+    postExpenses(expenseData, dispatch);
+    // expenseCtx.postExpenses(expenseData);
     
     amountRef.current.value = '';
     descriptionRef.current.value = '';
@@ -25,22 +27,21 @@ const ExpenseForm = (props) => {
   };
 
   useEffect(() => {
-    amountRef.current.value = expenseCtx.editExp.item?.Amount || '';
-    descriptionRef.current.value = expenseCtx.editExp.item?.Description || '';
-    categoryRef.current.value= expenseCtx.editExp.item?.Category || '';
-  }, [expenseCtx.editExp]);
+    amountRef.current.value = props.editExp.item?.Amount || '';
+    descriptionRef.current.value = props.editExp.item?.Description || '';
+    categoryRef.current.value= props.editExp.item?.Category || '';
+  }, [props.editExp]);
 
    const editHandler = () => {
-    expenseCtx.setUpadate(false);
-    // console.log('check obj dest',expenseCtx.editExp.id, "---->")
+    props.setUpadate(false);
 
     const expenseData = {
       Amount: amountRef.current.value,
       Description: descriptionRef.current.value,
       Category: categoryRef.current.value,
     };
-
-    expenseCtx.editExpense(expenseCtx.editExp.id, expenseData);
+    editExpense(props.editExp.id, expenseData, dispatch);
+    // expenseCtx.editExpense(expenseCtx.editExp.id, expenseData);
 
     amountRef.current.value = '';
     descriptionRef.current.value = '';
@@ -83,11 +84,11 @@ const ExpenseForm = (props) => {
           <option>other..</option>
         </select>
 
-        {!expenseCtx.update && <button
+        {!props.update && <button
           className="btn mt-3 btn-primary" onClick={() => submitHandler()}>
           ADD EXPENSE
         </button> }
-        {expenseCtx.update &&<button className="btn mt-3 mx-2 btn-warning" onClick={() => editHandler()}>
+        {props.update &&<button className="btn mt-3 mx-2 btn-warning" onClick={() => editHandler()}>
           UPDATE EXPENSE
         </button>}
       </form>
