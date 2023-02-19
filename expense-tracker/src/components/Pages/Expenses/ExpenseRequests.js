@@ -2,8 +2,9 @@ import axios from "axios";
 
 import { expensesActions } from "../../../store/ExpenseSlicer";
 
+
 export async function getExpenses(dispatch) {
-    const res = await axios.get('https://signup-and-authentication-default-rtdb.firebaseio.com/expenses.json');
+    const res = await axios.get(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses${localStorage.getItem("userEmail").split("@")[0]}.json`);
     const data = [];
     let sum = 0;
       for (let key in res.data) {
@@ -16,16 +17,16 @@ export async function getExpenses(dispatch) {
 }
 
 export async function deleteExpanse(id, dispatch) {
-    const res = await axios.delete(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses/${id}.json`)
+    const res = await axios.delete(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses${localStorage.getItem("userEmail").split("@")[0]}/${id}.json`)
     getExpenses(dispatch);
 }
 
 export async function editExpense(id, item, dispatch) {
-    const res = await axios.put(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses/${id}.json`, item);
+    const res = await axios.put(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses${localStorage.getItem("userEmail").split("@")[0]}/${id}.json`, item);
     await getExpenses(dispatch);
 }
 
 export async function postExpenses(item, dispatch){
-    const res = await axios.post('https://signup-and-authentication-default-rtdb.firebaseio.com/expenses.json',item);
+    const res = await axios.post(`https://signup-and-authentication-default-rtdb.firebaseio.com/expenses${localStorage.getItem("userEmail").split("@")[0]}.json`,item);
     getExpenses(dispatch)
 }
