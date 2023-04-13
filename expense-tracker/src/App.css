@@ -1,14 +1,14 @@
 #dark {
-    background-color: rgba(3, 3, 3, 0.918) ;
+    background-color: rgba(61, 57, 57, 0.918) ;
     color: white;
   }
   #dark input {
   color : white;
-  background-color: #282c34;
+  background-color: rgba(61, 57, 57, 0.918);
   }
   
   #dark #btn {
-    background-color: #181818;
+    background-color: rgba(61, 57, 57, 0.918);
   }
 
   #dark section {
