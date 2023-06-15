@@ -22,7 +22,7 @@ const ExpenseContainer = (props) => {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Expenses</h1>
-      {expense && (
+      {expense && props.csv && (
         <CSVLink data={expense}>
           <button className="ml-5 btn btn-info">DOWNLOAD EXPENSES FILE(csv)</button>
         </CSVLink>
